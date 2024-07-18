@@ -25,7 +25,6 @@ export default function Inscription() {
                 <Box noValidate sx={{ mt: 1 }}>
                     <TextField
                         margin="normal"
-                        required
                         fullWidth
                         name="name"
                         label={!user?.name && "name"}
@@ -36,7 +35,6 @@ export default function Inscription() {
                     />
                     <TextField
                         margin="normal"
-                        required
                         fullWidth
                         id="email"
                         label={!user?.email && "Email Address"}
@@ -47,7 +45,6 @@ export default function Inscription() {
                     />
                     <TextField
                         margin="normal"
-                        required
                         fullWidth
                         id="phone"
                         label={!user?.phone && "number phone"}
@@ -58,7 +55,6 @@ export default function Inscription() {
                     />
                     <TextField
                         margin="normal"
-                        required
                         fullWidth
                         id="adresse"
                         label={!user?.adresse && "adresse"}

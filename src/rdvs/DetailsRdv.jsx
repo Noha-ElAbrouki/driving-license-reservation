@@ -3,14 +3,16 @@ import Grid from '@mui/material/Grid';
 import * as React from 'react';
 import { useLocation } from 'react-router-dom';
 import Item from './Item';
+import useStyles from './rdvs.styles';
 
 
 
 export default function DetailsRdv() {
+    const classes = useStyles()
     const { state } = useLocation();
 
     return (
-        <Box sx={{ flexGrow: 1, backgroundColor: '#fff' }}>
+        <Box cassName={classes.containerDetail}>
 
             <Grid container spacing={2}>
                 <Grid item xs={4}>

@@ -26,7 +26,6 @@ export default function Paiement() {
                 <Box noValidate sx={{ mt: 1 }}>
                     <TextField
                         margin="normal"
-                        required
                         fullWidth
                         name="numeroCarte"
                         label={!paiement?.numeroCarte && "numeroCarte"}
@@ -37,7 +36,6 @@ export default function Paiement() {
                     />
                     <TextField
                         margin="normal"
-                        required
                         fullWidth
                         id="montant"
                         label={!paiement?.montant && "montant"}

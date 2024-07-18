@@ -9,17 +9,16 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
-import * as dayjs from 'dayjs';
-import localizedFormat from 'dayjs/plugin/localizedFormat';
-import SearchBar from "material-ui-search-bar";
+import { useAtom } from 'jotai';
 import * as React from 'react';
 import { useNavigate } from "react-router-dom";
-import EnhancedTableHead from './Header';
-import useSort from './useSort';
 import { reservationAtom } from '../espaceUser/userAtom';
-import { useAtom } from 'jotai';
+import EnhancedTableHead from './Header';
+import useStyles from './rdvs.styles';
+import Search from './search';
+import useSort from './useSort';
+import { addDays } from './utils';
 
-dayjs.extend(localizedFormat)
 
 function createData(id, name, agrement, date, adresse) {
     return {
@@ -31,9 +30,6 @@ function createData(id, name, agrement, date, adresse) {
     };
 }
 
-const addDays = (numberDays) => {
-    return dayjs().add(numberDays, 'day').format('L LT')
-}
 
 const originalRows = [
     createData(1, 'Auto ecole 1', 305, addDays(1), 'adresse 1'),
@@ -53,6 +49,7 @@ const originalRows = [
 
 
 export default function Rdvs() {
+    const classes = useStyles()
     const [order, setOrder] = React.useState('asc');
     const [orderBy, setOrderBy] = React.useState('name');
     const [isNumeric, setIsNumeric] = React.useState()
@@ -69,12 +66,6 @@ export default function Rdvs() {
     const rowsData = useSort({ order, isFieldNumeric: isNumeric, field: orderBy, data: rows }).slice(
         page * rowsPerPage,
         page * rowsPerPage + rowsPerPage)
-
-
-    React.useEffect(() => {
-        setData(rowsData)
-
-    }, [order, isNumeric, orderBy, page, rowsPerPage])
 
 
 
@@ -121,21 +112,21 @@ export default function Rdvs() {
     };
 
 
+    React.useEffect(() => {
+        setData(rowsData)
+    }, [order, isNumeric, orderBy, page, rowsPerPage])
+
+
     return (
         <>
             <Box sx={{ width: '100%' }}>
-                <div style={{ display: 'flex', justifyContent: 'end' }}>
-                    <SearchBar
-                        value={searched}
-                        onChange={(searchVal) => requestSearch(searchVal)}
-                        onCancelSearch={() => cancelSearch()}
-                        style={{ width: 200 }}
-                    />
+                <div className={classes.search}>
+                    <Search onCancel={cancelSearch} onChange={requestSearch} value={searched} />
                 </div>
-                <Paper sx={{ width: '100%', mb: 2 }}>
+                <Paper className={classes.body}>
                     <TableContainer>
                         <Table
-                            sx={{ minWidth: 750 }}
+                            className={classes.table}
                             aria-labelledby="tableTitle"
                             size={'small'}
                         >
@@ -147,7 +138,6 @@ export default function Rdvs() {
                             <TableBody>
                                 {data?.map((row, index) => {
                                     const labelId = `enhanced-table-${index}`;
-
                                     return (
                                         <TableRow
                                             hover
