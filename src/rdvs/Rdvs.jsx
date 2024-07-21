@@ -1,3 +1,4 @@
+import { Suspense, useState, useEffect } from 'react'
 import SendIcon from '@mui/icons-material/Send';
 import ViewIcon from '@mui/icons-material/Visibility';
 import Box from '@mui/material/Box';
@@ -50,13 +51,16 @@ const originalRows = [
 
 export default function Rdvs() {
     const classes = useStyles()
-    const [order, setOrder] = React.useState('asc');
-    const [orderBy, setOrderBy] = React.useState('name');
-    const [isNumeric, setIsNumeric] = React.useState()
-    const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(5);
-    const [data, setData] = React.useState()
-    const [searched, setSearched] = React.useState()
+    const [order, setOrder] = useState('asc');
+    const [orderBy, setOrderBy] = useState('name');
+    const [isNumeric, setIsNumeric] = useState()
+    const [page, setPage] = useState(0);
+    const [rowsPerPage, setRowsPerPage] = useState(5);
+    const [data, setData] = useState()
+    const [searched, setSearched] = useState()
+
+
+
     const [reservation,] = useAtom(reservationAtom)
     const navigate = useNavigate();
     const rows = originalRows.filter((item) => item.id !== reservation?.id)
@@ -81,6 +85,7 @@ export default function Rdvs() {
         navigate(`/details/${row.id}`, { state: row })
 
     };
+
 
     const handleReserve = (row) => {
         navigate(`/reservation/${row.id}`, { state: row })
@@ -112,13 +117,13 @@ export default function Rdvs() {
     };
 
 
-    React.useEffect(() => {
+    useEffect(() => {
         setData(rowsData)
     }, [order, isNumeric, orderBy, page, rowsPerPage])
 
 
     return (
-        <>
+        <Suspense fallback={<div>Loading</div>}>
             <Box sx={{ width: '100%' }}>
                 <div className={classes.search}>
                     <Search onCancel={cancelSearch} onChange={requestSearch} value={searched} />
@@ -178,6 +183,6 @@ export default function Rdvs() {
                     />
                 </Paper>
             </Box>
-        </>
+        </Suspense>
     );
 }

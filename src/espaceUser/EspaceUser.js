@@ -54,7 +54,7 @@ export default function NestedList() {
 
 
     return (
-        <>
+        <React.Suspense fallback={<div>Loading</div>}>
             {isEmpty ?
                 <EmptyMessage />
                 : (
@@ -101,6 +101,6 @@ export default function NestedList() {
                             </MuiAlert>
                         </Snackbar>
                     </List>)}
-        </>
+        </React.Suspense>
     );
 }

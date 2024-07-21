@@ -43,54 +43,56 @@ export default function PersistentDrawerLeft() {
     }, [])
 
     return (
-        <Box sx={{ display: 'flex' }}>
-            <AppBar position="fixed" open={open}>
-                <Toolbar>
-                    {!open && (<IconButton
-                        color="inherit"
-                        aria-label="open drawer"
-                        onClick={handleDrawer}
-                        edge="start"
-                        sx={{ mr: 2 }}
-                    >
-                        <MenuIcon />
-                    </IconButton>)}
-                    <Typography variant="h6" noWrap component="div">
-                        Réservation de date d’examen pour passer le permis de conduire
-                    </Typography>
-                </Toolbar>
-            </AppBar>
-            <Drawer
-                className={classes.drawerLeft}
-                variant="persistent"
-                anchor="left"
-                open={open}
-            >
-                <DrawerHeader>
-                    <Typography variant="h6">Menu</Typography>
-                    <IconButton onClick={handleDrawer}>
-                        {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-                    </IconButton>
-                </DrawerHeader>
-                <Divider />
-                <List>
-                    {data.map(({ text, url, icon }, index) => (
-                        <ListItem key={text} disablePadding>
-                            <ListItemButton onClick={() => navigate(url)}>
-                                <ListItemIcon>
-                                    {icon}
-                                </ListItemIcon>
-                                <ListItemText primary={text} />
-                            </ListItemButton>
-                        </ListItem>
-                    ))}
-                </List>
+        <React.Suspense fallback={<div>Loading ...</div>}>
+            <Box sx={{ display: 'flex' }}>
+                <AppBar position="fixed" open={open}>
+                    <Toolbar>
+                        {!open && (<IconButton
+                            color="inherit"
+                            aria-label="open drawer"
+                            onClick={handleDrawer}
+                            edge="start"
+                            sx={{ mr: 2 }}
+                        >
+                            <MenuIcon />
+                        </IconButton>)}
+                        <Typography variant="h6" noWrap component="div">
+                            Réservation de date d’examen pour passer le permis de conduire
+                        </Typography>
+                    </Toolbar>
+                </AppBar>
+                <Drawer
+                    className={classes.drawerLeft}
+                    variant="persistent"
+                    anchor="left"
+                    open={open}
+                >
+                    <DrawerHeader>
+                        <Typography variant="h6">Menu</Typography>
+                        <IconButton onClick={handleDrawer}>
+                            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+                        </IconButton>
+                    </DrawerHeader>
+                    <Divider />
+                    <List>
+                        {data.map(({ text, url, icon }, index) => (
+                            <ListItem key={text} disablePadding>
+                                <ListItemButton onClick={() => navigate(url)}>
+                                    <ListItemIcon>
+                                        {icon}
+                                    </ListItemIcon>
+                                    <ListItemText primary={text} />
+                                </ListItemButton>
+                            </ListItem>
+                        ))}
+                    </List>
 
-            </Drawer>
-            <Main open={open}>
-                <DrawerHeader />
-                <Outlet />
-            </Main>
-        </Box>
+                </Drawer>
+                <Main open={open}>
+                    <DrawerHeader />
+                    <Outlet />
+                </Main>
+            </Box>
+        </React.Suspense>
     );
 }

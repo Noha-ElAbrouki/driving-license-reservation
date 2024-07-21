@@ -1,11 +1,11 @@
-import * as React from "react";
+import { lazy } from 'react';
 import { createBrowserRouter } from "react-router-dom";
-import PersistentDrawerLeft from "./accueil/Drawer";
-import EspaceUser from "./espaceUser/EspaceUser";
-import Rdvs from "./rdvs/Rdvs";
 import DetailsRdv from "./rdvs/DetailsRdv";
 import Reservation from "./reservation/Reservation";
 
+const PersistentDrawerLeft = lazy(() => import("./accueil/Drawer"));
+const Rdvs = lazy(() => import("./rdvs/Rdvs"));
+const EspaceUser = lazy(() => import("./espaceUser/EspaceUser"));
 
 
 export const router = createBrowserRouter([
