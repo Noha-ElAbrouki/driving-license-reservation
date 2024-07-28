@@ -1,23 +1,22 @@
-import { Suspense, useState, useEffect } from 'react';
 import SendIcon from '@mui/icons-material/Send';
 import ViewIcon from '@mui/icons-material/Visibility';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import Paper from '@mui/material/Paper';
+import Skeleton from '@mui/material/Skeleton';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
-import Skeleton from '@mui/material/Skeleton';
 import { useAtom } from 'jotai';
 import * as React from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { reservationAtom } from '../espaceUser/userAtom';
 import EnhancedTableHead from './Header';
 import useStyles from './rdvs.styles';
-import Search from './search';
 import useSort from './useSort';
 import { addDays } from './utils';
 
@@ -27,7 +26,7 @@ function createData(id, name, agrement, date, adresse) {
     name,
     agrement,
     date,
-    adresse,
+    adresse
   };
 }
 
@@ -44,7 +43,7 @@ const originalRows = [
   createData(10, 'Uuto ecole 12', 392, addDays(10), 'adresse 10'),
   createData(11, 'Yuto ecole 11', 318, addDays(11), 'adresse 11'),
   createData(12, 'Guto ecole 13', 360, addDays(12), 'adresse 12'),
-  createData(13, 'Xuto ecole 14', 437, addDays(13), 'adresse 13'),
+  createData(13, 'Xuto ecole 14', 437, addDays(13), 'adresse 13')
 ];
 
 const Rdvs = () => {
@@ -55,7 +54,7 @@ const Rdvs = () => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [data, setData] = useState();
-  const [searched, setSearched] = useState();
+  // const [searched, setSearched] = useState();
 
   const [reservation] = useAtom(reservationAtom);
   const navigate = useNavigate();
@@ -65,7 +64,7 @@ const Rdvs = () => {
     order,
     isFieldNumeric: isNumeric,
     field: orderBy,
-    data: rows,
+    data: rows
   }).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
   const handleRequestSort = (property, isNum) => {
@@ -92,21 +91,21 @@ const Rdvs = () => {
     setPage(0);
   };
 
-  const requestSearch = (searchedVal) => {
-    if (!searchedVal) {
-      setData(rowsData);
-      return;
-    }
-    const filteredRows = rows.filter((row) => {
-      return row.name.toLowerCase().includes(searchedVal?.toLowerCase());
-    });
-    setData(filteredRows);
-  };
+  // const requestSearch = (searchedVal) => {
+  //   if (!searchedVal) {
+  //     setData(rowsData);
+  //     return;
+  //   }
+  //   const filteredRows = rows.filter((row) => {
+  //     return row.name.toLowerCase().includes(searchedVal?.toLowerCase());
+  //   });
+  //   setData(filteredRows);
+  // };
 
-  const cancelSearch = () => {
-    setSearched('');
-    setData(rowsData);
-  };
+  // const cancelSearch = () => {
+  //   setSearched('');
+  //   setData(rowsData);
+  // };
 
   useEffect(() => {
     setData(rowsData);
