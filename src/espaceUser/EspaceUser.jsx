@@ -16,7 +16,7 @@ import EditReservation from './EditReservation';
 import EmptyMessage from './EmptyMessage';
 import { PaiementAtom, UserAtom, reservationAtom } from './userAtom';
 
-const NestedList=()=> {
+const NestedList = () => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const [mode, setMode] = React.useState('view');
@@ -109,6 +109,6 @@ const NestedList=()=> {
       )}
     </React.Suspense>
   );
-}
+};
 
-export default NestedList
+export default NestedList;

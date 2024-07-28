@@ -23,7 +23,7 @@ import AppBar from './AppBar';
 import DrawerHeader from './DrawerHeader';
 import Main from './Main';
 
-const PersistentDrawerLeft=()=> {
+const PersistentDrawerLeft = () => {
   const classes = useStyles();
   const theme = useTheme();
   const navigate = useNavigate();
@@ -99,5 +99,5 @@ const PersistentDrawerLeft=()=> {
       </Box>
     </React.Suspense>
   );
-}
-export default PersistentDrawerLeft
+};
+export default PersistentDrawerLeft;
