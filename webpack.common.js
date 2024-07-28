@@ -39,9 +39,11 @@ module.exports = {
         ]
     },
     optimization: {
+        minimize: true,
         moduleIds: 'deterministic',
         runtimeChunk: 'single',
         splitChunks: {
+            chunks: 'all',
             cacheGroups: {
                 vendor: {
                     test: /[\\/]node_modules[\\/]/,
@@ -50,5 +52,5 @@ module.exports = {
                 },
             },
         },
-    },
+    }
 };

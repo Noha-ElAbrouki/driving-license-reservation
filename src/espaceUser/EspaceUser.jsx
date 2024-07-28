@@ -7,6 +7,7 @@ import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import Snackbar from '@mui/material/Snackbar';
+import Skeleton from '@mui/material/Skeleton';
 import { useAtom } from 'jotai';
 import * as React from 'react';
 import Item from '../rdvs/Item';
@@ -51,7 +52,9 @@ const NestedList = () => {
   }, [isDateUpdated]);
 
   return (
-    <React.Suspense fallback={<div>Loading</div>}>
+    <React.Suspense
+      fallback={<Skeleton variant="rectangular" width="100%" height="100%" />}
+    >
       {isEmpty ? (
         <EmptyMessage />
       ) : (

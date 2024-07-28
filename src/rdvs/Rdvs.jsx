@@ -10,6 +10,7 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
+import Skeleton from '@mui/material/Skeleton';
 import { useAtom } from 'jotai';
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -26,7 +27,7 @@ function createData(id, name, agrement, date, adresse) {
     name,
     agrement,
     date,
-    adresse
+    adresse,
   };
 }
 
@@ -43,7 +44,7 @@ const originalRows = [
   createData(10, 'Uuto ecole 12', 392, addDays(10), 'adresse 10'),
   createData(11, 'Yuto ecole 11', 318, addDays(11), 'adresse 11'),
   createData(12, 'Guto ecole 13', 360, addDays(12), 'adresse 12'),
-  createData(13, 'Xuto ecole 14', 437, addDays(13), 'adresse 13')
+  createData(13, 'Xuto ecole 14', 437, addDays(13), 'adresse 13'),
 ];
 
 const Rdvs = () => {
@@ -64,7 +65,7 @@ const Rdvs = () => {
     order,
     isFieldNumeric: isNumeric,
     field: orderBy,
-    data: rows
+    data: rows,
   }).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
   const handleRequestSort = (property, isNum) => {
@@ -112,15 +113,17 @@ const Rdvs = () => {
   }, [order, isNumeric, orderBy, page, rowsPerPage]);
 
   return (
-    <Suspense fallback={<div>Loading</div>}>
+    <Suspense
+      fallback={<Skeleton variant="rectangular" width="100%" height="100%" />}
+    >
       <Box sx={{ width: '100%' }}>
-        <div className={classes.search}>
+        {/* <div className={classes.search}>
           <Search
             onCancel={cancelSearch}
             onChange={requestSearch}
             value={searched}
           />
-        </div>
+        </div> */}
         <Paper className={classes.body}>
           <TableContainer>
             <Table
