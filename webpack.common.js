@@ -8,6 +8,7 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         clean: true,
         pathinfo: false,
+        publicPath: '/'
     },
     plugins: [
         new HtmlWebpackPlugin({
