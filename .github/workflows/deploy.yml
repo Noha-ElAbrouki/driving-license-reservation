@@ -2,14 +2,14 @@ name: Deploy to Vercel
 
 on:
   workflow_run:
-    workflows: ['Test']
+    workflows: ['Lint']
     types:
       - completed
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' && github.head_ref == 'main' }}
+    if: ${{ github.event.workflow_run.conclusion == 'success' && github.head_ref == 'master' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
