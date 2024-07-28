@@ -16,83 +16,88 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { useTheme } from '@mui/material/styles';
 import * as React from 'react';
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import useStyles from '../rdvs/rdvs.styles';
 import AppBar from './AppBar';
 import DrawerHeader from './DrawerHeader';
 import Main from './Main';
-import { useEffect } from 'react';
 
+const PersistentDrawerLeft=()=> {
+  const classes = useStyles();
+  const theme = useTheme();
+  const navigate = useNavigate();
 
-export default function PersistentDrawerLeft() {
-    const classes = useStyles()
-    const theme = useTheme();
-    const navigate = useNavigate();
+  const data = [
+    { text: 'Listes des rdvs', url: '/rdvs', icon: <InboxIcon /> },
+    { text: 'Mes reservation', url: '/mon-espace', icon: <MailIcon /> }
+  ];
 
+  const [open, setOpen] = React.useState(true);
 
-    const data = [{ text: 'Listes des rdvs', url: '/rdvs', icon: <InboxIcon /> }, { text: 'Mes reservation', url: '/mon-espace', icon: <MailIcon /> }]
+  const handleDrawer = () => {
+    setOpen(!open);
+  };
 
-    const [open, setOpen] = React.useState(true);
+  useEffect(() => {
+    navigate(`/rdvs`);
+  }, []);
 
-    const handleDrawer = () => {
-        setOpen(!open);
-    };
-
-    useEffect(() => {
-        navigate(`/rdvs`)
-    }, [])
-
-    return (
-        <React.Suspense fallback={<div>Loading ...</div>}>
-            <Box sx={{ display: 'flex' }}>
-                <AppBar position="fixed" open={open}>
-                    <Toolbar>
-                        {!open && (<IconButton
-                            color="inherit"
-                            aria-label="open drawer"
-                            onClick={handleDrawer}
-                            edge="start"
-                            sx={{ mr: 2 }}
-                        >
-                            <MenuIcon />
-                        </IconButton>)}
-                        <Typography variant="h6" noWrap component="div">
-                            Réservation de date d’examen pour passer le permis de conduire
-                        </Typography>
-                    </Toolbar>
-                </AppBar>
-                <Drawer
-                    className={classes.drawerLeft}
-                    variant="persistent"
-                    anchor="left"
-                    open={open}
-                >
-                    <DrawerHeader>
-                        <Typography variant="h6">Menu</Typography>
-                        <IconButton onClick={handleDrawer}>
-                            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-                        </IconButton>
-                    </DrawerHeader>
-                    <Divider />
-                    <List>
-                        {data.map(({ text, url, icon }, index) => (
-                            <ListItem key={text} disablePadding>
-                                <ListItemButton onClick={() => navigate(url)}>
-                                    <ListItemIcon>
-                                        {icon}
-                                    </ListItemIcon>
-                                    <ListItemText primary={text} />
-                                </ListItemButton>
-                            </ListItem>
-                        ))}
-                    </List>
-
-                </Drawer>
-                <Main open={open}>
-                    <DrawerHeader />
-                    <Outlet />
-                </Main>
-            </Box>
-        </React.Suspense>
-    );
+  return (
+    <React.Suspense fallback={<div>Loading ...</div>}>
+      <Box sx={{ display: 'flex' }}>
+        <AppBar position="fixed" open={open}>
+          <Toolbar>
+            {!open && (
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                onClick={handleDrawer}
+                edge="start"
+                sx={{ mr: 2 }}
+              >
+                <MenuIcon />
+              </IconButton>
+            )}
+            <Typography variant="h6" noWrap component="div">
+              Réservation de date d’examen pour passer le permis de conduire
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <Drawer
+          className={classes.drawerLeft}
+          variant="persistent"
+          anchor="left"
+          open={open}
+        >
+          <DrawerHeader>
+            <Typography variant="h6">Menu</Typography>
+            <IconButton onClick={handleDrawer}>
+              {theme.direction === 'ltr' ? (
+                <ChevronLeftIcon />
+              ) : (
+                <ChevronRightIcon />
+              )}
+            </IconButton>
+          </DrawerHeader>
+          <Divider />
+          <List>
+            {data.map(({ text, url, icon }, index) => (
+              <ListItem key={text} disablePadding>
+                <ListItemButton onClick={() => navigate(url)}>
+                  <ListItemIcon>{icon}</ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+        </Drawer>
+        <Main open={open}>
+          <DrawerHeader />
+          <Outlet />
+        </Main>
+      </Box>
+    </React.Suspense>
+  );
 }
+export default PersistentDrawerLeft

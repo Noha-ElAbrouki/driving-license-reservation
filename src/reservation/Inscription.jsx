@@ -18,7 +18,7 @@ export default function Inscription() {
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'center',
+          alignItems: 'center'
         }}
       >
         <Box noValidate sx={{ mt: 1 }}>

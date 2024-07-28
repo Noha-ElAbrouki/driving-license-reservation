@@ -9,28 +9,28 @@ const headCells = [
   {
     id: 'name',
     numeric: false,
-    label: 'Raison sociale',
+    label: 'Raison sociale'
   },
   {
     id: 'date',
     numeric: false,
-    label: 'date',
+    label: 'date'
   },
   {
     id: 'adresse',
     numeric: false,
-    label: 'adresse',
+    label: 'adresse'
   },
   {
     id: 'agrement',
     numeric: true,
-    label: "numero d'agrément",
+    label: "numero d'agrément"
   },
   {
     id: 'actions',
     numeric: false,
-    label: 'Actions',
-  },
+    label: 'Actions'
+  }
 ];
 
 const EnhancedTableHead = (props) => {
@@ -64,5 +64,5 @@ export default EnhancedTableHead;
 EnhancedTableHead.propTypes = {
   onRequestSort: PropTypes.func.isRequired,
   order: PropTypes.oneOf(['asc', 'desc']).isRequired,
-  orderBy: PropTypes.string.isRequired,
+  orderBy: PropTypes.string.isRequired
 };

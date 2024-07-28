@@ -8,7 +8,7 @@
     "build": "webpack --config webpack.prod.js",
     "start": "webpack serve  --config webpack.dev.js",
     "eslint": "eslint src --ext .js,jsx",
-    "eslint:fix": "eslint --fix"
+    "eslint:fix": "eslint src/** --fix"
   },
   "author": "",
   "license": "ISC",
