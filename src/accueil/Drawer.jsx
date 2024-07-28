@@ -17,6 +17,7 @@ import Typography from '@mui/material/Typography';
 import { useTheme } from '@mui/material/styles';
 import * as React from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
+import Skeleton from '@mui/material/Skeleton';
 import { useEffect } from 'react';
 import useStyles from '../rdvs/rdvs.styles';
 import AppBar from './AppBar';
@@ -30,7 +31,7 @@ const PersistentDrawerLeft = () => {
 
   const data = [
     { text: 'Listes des rdvs', url: '/rdvs', icon: <InboxIcon /> },
-    { text: 'Mes reservation', url: '/mon-espace', icon: <MailIcon /> },
+    { text: 'Mes reservation', url: '/mon-espace', icon: <MailIcon /> }
   ];
 
   const [open, setOpen] = React.useState(true);
@@ -44,7 +45,9 @@ const PersistentDrawerLeft = () => {
   }, []);
 
   return (
-    <React.Suspense fallback={<div>Loading ...</div>}>
+    <React.Suspense
+      fallback={<Skeleton variant="rectangular" width="100%" height="100%" />}
+    >
       <Box sx={{ display: 'flex' }}>
         <AppBar position="fixed" open={open}>
           <Toolbar>

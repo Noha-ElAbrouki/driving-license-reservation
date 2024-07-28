@@ -19,20 +19,20 @@ export const router = createBrowserRouter([
     children: [
       {
         path: 'rdvs',
-        element: <Rdvs />,
+        element: <Rdvs />
       },
       {
         path: 'details/:id',
-        element: <DetailsRdv />,
+        element: <DetailsRdv />
       },
       {
         path: 'reservation/:id',
-        element: <Reservation />,
+        element: <Reservation />
       },
       {
         path: 'mon-espace',
-        element: <EspaceUser />,
-      },
-    ],
-  },
+        element: <EspaceUser />
+      }
+    ]
+  }
 ]);
