@@ -5,7 +5,7 @@ import { useAtom } from 'jotai';
 import * as React from 'react';
 import { UserAtom } from '../espaceUser/userAtom';
 
-export default function Inscription() {
+const Inscription = () => {
   const [user, setUser] = useAtom(UserAtom);
 
   const handleChange = (event) => {
@@ -18,7 +18,7 @@ export default function Inscription() {
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'center'
+          alignItems: 'center',
         }}
       >
         <Box noValidate sx={{ mt: 1 }}>
@@ -66,4 +66,5 @@ export default function Inscription() {
       </Box>
     </Container>
   );
-}
+};
+export default Inscription;

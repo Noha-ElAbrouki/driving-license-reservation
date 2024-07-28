@@ -26,7 +26,7 @@ function createData(id, name, agrement, date, adresse) {
     name,
     agrement,
     date,
-    adresse
+    adresse,
   };
 }
 
@@ -43,10 +43,10 @@ const originalRows = [
   createData(10, 'Uuto ecole 12', 392, addDays(10), 'adresse 10'),
   createData(11, 'Yuto ecole 11', 318, addDays(11), 'adresse 11'),
   createData(12, 'Guto ecole 13', 360, addDays(12), 'adresse 12'),
-  createData(13, 'Xuto ecole 14', 437, addDays(13), 'adresse 13')
+  createData(13, 'Xuto ecole 14', 437, addDays(13), 'adresse 13'),
 ];
 
-export default function Rdvs() {
+const Rdvs = () => {
   const classes = useStyles();
   const [order, setOrder] = useState('asc');
   const [orderBy, setOrderBy] = useState('name');
@@ -64,7 +64,7 @@ export default function Rdvs() {
     order,
     isFieldNumeric: isNumeric,
     field: orderBy,
-    data: rows
+    data: rows,
   }).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
   const handleRequestSort = (property, isNumeric) => {
@@ -182,4 +182,6 @@ export default function Rdvs() {
       </Box>
     </Suspense>
   );
-}
+};
+
+export default Rdvs;

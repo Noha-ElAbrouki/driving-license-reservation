@@ -19,9 +19,7 @@ const Reservation = () => {
   const navigate = useNavigate();
   const [activeStep, setActiveStep] = React.useState(0);
   const [completed, setCompleted] = React.useState({});
-  const [reservation, setReservation] = useAtom(reservationAtom);
-
-  console.log('reservation staaaate', state);
+  const [, setReservation] = useAtom(reservationAtom);
 
   const handleNext = () => {
     setCompleted({ ...completed, [activeStep]: true });
@@ -39,7 +37,7 @@ const Reservation = () => {
     navigate('/mon-espace');
   };
 
-  const isNext = activeStep != steps.length - 1;
+  const isNext = activeStep !== steps.length - 1;
   const isFinished = activeStep === steps.length - 1;
 
   return (

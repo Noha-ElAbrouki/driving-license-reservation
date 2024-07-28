@@ -44,11 +44,6 @@ const useStyles = makeStyles({
   },
   disablePading: {
     padding: 0
-  },
-  actions: {
-    display: 'flex',
-    justifyContent: 'end',
-    marginTop: 10
   }
 });
 export default useStyles;
