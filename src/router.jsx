@@ -7,6 +7,10 @@ const PersistentDrawerLeft = lazy(() => import('./accueil/Drawer'));
 const Rdvs = lazy(() => import('./rdvs/Rdvs'));
 const EspaceUser = lazy(() => import('./espaceUser/EspaceUser'));
 
+const ErrorPage = () => {
+  return <h2>Error!</h2>;
+};
+
 export const router = createBrowserRouter([
   {
     path: '/',
@@ -15,24 +19,20 @@ export const router = createBrowserRouter([
     children: [
       {
         path: 'rdvs',
-        element: <Rdvs />
+        element: <Rdvs />,
       },
       {
         path: 'details/:id',
-        element: <DetailsRdv />
+        element: <DetailsRdv />,
       },
       {
         path: 'reservation/:id',
-        element: <Reservation />
+        element: <Reservation />,
       },
       {
         path: 'mon-espace',
-        element: <EspaceUser />
-      }
-    ]
-  }
+        element: <EspaceUser />,
+      },
+    ],
+  },
 ]);
-
-const ErrorPage = () => {
-  return <h2>Error!</h2>;
-};
