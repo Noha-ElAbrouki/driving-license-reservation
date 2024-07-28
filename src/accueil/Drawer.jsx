@@ -30,7 +30,7 @@ const PersistentDrawerLeft = () => {
 
   const data = [
     { text: 'Listes des rdvs', url: '/rdvs', icon: <InboxIcon /> },
-    { text: 'Mes reservation', url: '/mon-espace', icon: <MailIcon /> }
+    { text: 'Mes reservation', url: '/mon-espace', icon: <MailIcon /> },
   ];
 
   const [open, setOpen] = React.useState(true);
@@ -82,7 +82,7 @@ const PersistentDrawerLeft = () => {
           </DrawerHeader>
           <Divider />
           <List>
-            {data.map(({ text, url, icon }, index) => (
+            {data.map(({ text, url, icon }) => (
               <ListItem key={text} disablePadding>
                 <ListItemButton onClick={() => navigate(url)}>
                   <ListItemIcon>{icon}</ListItemIcon>

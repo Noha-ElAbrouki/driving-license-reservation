@@ -67,11 +67,11 @@ const Rdvs = () => {
     data: rows,
   }).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
-  const handleRequestSort = (property, isNumeric) => {
+  const handleRequestSort = (property, isNum) => {
     const isAsc = orderBy === property && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
     setOrderBy(property);
-    setIsNumeric(isNumeric);
+    setIsNumeric(isNum);
   };
 
   const handleView = (row) => {
