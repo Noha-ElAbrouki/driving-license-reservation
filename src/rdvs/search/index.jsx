@@ -1,18 +1,18 @@
-import SearchBar from "material-ui-search-bar";
-import useStyles from "../rdvs.styles";
-
+import SearchBar from 'material-ui-search-bar';
+import useStyles from '../rdvs.styles';
 
 const Search = ({ value, onCancel, onChange }) => {
-    const classes = useStyles()
-    return (
-        <SearchBar
-            value={value}
-            onChange={onChange}
-            onCancelSearch={onCancel}
-            // style={{ width: 200 }}
-            className={classes.searchBar}
-        />
-    )
-}
+  const { classes } = useStyles();
 
-export default Search
+  return (
+    <SearchBar
+      value={value}
+      onChange={onChange}
+      onCancelSearch={onCancel}
+      // style={{ width: 200 }}
+      className={classes.searchBar}
+    />
+  );
+};
+
+export default Search;

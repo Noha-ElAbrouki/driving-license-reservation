@@ -9,6 +9,7 @@ module.exports = merge(common, {
         historyApiFallback: true,
         static: path.join(__dirname, './'),
         port: 9000,
+        hot: true
     },
     output: {
         filename: '[name].bundle.js',
