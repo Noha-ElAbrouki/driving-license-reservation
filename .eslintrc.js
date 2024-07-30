@@ -7,7 +7,8 @@ module.exports = {
     'airbnb',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
-    'plugin:prettier/recommended'
+    'plugin:prettier/recommended',
+    'plugin:cypress/recommended'
   ],
   parserOptions: {
     ecmaFeatures: {
@@ -19,7 +20,8 @@ module.exports = {
   plugins: [
     'react',
     'react-hooks',
-    'prettier'
+    'prettier',
+    'cypress'
   ],
   rules: {
     "react/prop-types":"off",

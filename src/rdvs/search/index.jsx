@@ -1,16 +1,18 @@
-import SearchBar from 'material-ui-search-bar';
+/* eslint-disable no-unused-vars */
+// import SearchBar from 'material-ui-search-bar';
 import useStyles from '../rdvs.styles';
 
 const Search = ({ value, onCancel, onChange }) => {
   const classes = useStyles();
 
   return (
-    <SearchBar
-      value={value}
-      onChange={onChange}
-      onCancelSearch={onCancel}
-      className={classes.searchBar}
-    />
+    <div />
+    // <SearchBar
+    //   value={value}
+    //   onChange={onChange}
+    //   onCancelSearch={onCancel}
+    //   className={classes.searchBar}
+    // />
   );
 };
 

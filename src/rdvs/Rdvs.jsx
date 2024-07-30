@@ -1,6 +1,5 @@
 import SendIcon from '@mui/icons-material/Send';
 import ViewIcon from '@mui/icons-material/Visibility';
-import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import Paper from '@mui/material/Paper';
 import Skeleton from '@mui/material/Skeleton';
@@ -47,7 +46,7 @@ const originalRows = [
 ];
 
 const Rdvs = () => {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const [order, setOrder] = useState('asc');
   const [orderBy, setOrderBy] = useState('name');
   const [isNumeric, setIsNumeric] = useState();
@@ -115,73 +114,73 @@ const Rdvs = () => {
     <Suspense
       fallback={<Skeleton variant="rectangular" width="100%" height="100%" />}
     >
-      <Box sx={{ width: '100%' }}>
-        {/* <div className={classes.search}>
+      {/* <Box sx={{ width: '100%' }}> */}
+      {/* <div className={classes.search}>
           <Search
             onCancel={cancelSearch}
             onChange={requestSearch}
             value={searched}
           />
         </div> */}
-        <Paper className={classes.body}>
-          <TableContainer>
-            <Table
-              className={classes.table}
-              aria-labelledby="tableTitle"
-              size="small"
-            >
-              <EnhancedTableHead
-                order={order}
-                orderBy={orderBy}
-                onRequestSort={handleRequestSort}
-              />
-              <TableBody>
-                {data?.map((row, index) => {
-                  const labelId = `enhanced-table-${index}`;
-                  return (
-                    <TableRow hover tabIndex={-1} key={row.name}>
-                      <TableCell
-                        component="th"
-                        id={labelId}
-                        scope="row"
-                        align="left"
+      <Paper>
+        <TableContainer>
+          <Table
+            className={classes.table}
+            aria-labelledby="tableTitle"
+            size="small"
+          >
+            <EnhancedTableHead
+              order={order}
+              orderBy={orderBy}
+              onRequestSort={handleRequestSort}
+            />
+            <TableBody>
+              {data?.map((row, index) => {
+                const labelId = `enhanced-table-${index}`;
+                return (
+                  <TableRow hover tabIndex={-1} key={row.name}>
+                    <TableCell
+                      component="th"
+                      id={labelId}
+                      scope="row"
+                      align="left"
+                    >
+                      {row.name}
+                    </TableCell>
+                    <TableCell align="left">{row.date}</TableCell>
+                    <TableCell align="left">{row.adresse}</TableCell>
+                    <TableCell align="right">{row.agrement}</TableCell>
+                    <TableCell align="left">
+                      <IconButton
+                        aria-label="view"
+                        onClick={() => handleView(row)}
                       >
-                        {row.name}
-                      </TableCell>
-                      <TableCell align="left">{row.date}</TableCell>
-                      <TableCell align="left">{row.adresse}</TableCell>
-                      <TableCell align="right">{row.agrement}</TableCell>
-                      <TableCell align="left">
-                        <IconButton
-                          aria-label="view"
-                          onClick={() => handleView(row)}
-                        >
-                          <ViewIcon />
-                        </IconButton>
-                        <IconButton
-                          aria-label="reserve"
-                          onClick={() => handleReserve(row)}
-                        >
-                          <SendIcon />
-                        </IconButton>
-                      </TableCell>
-                    </TableRow>
-                  );
-                })}
-              </TableBody>
-            </Table>
-          </TableContainer>
-          <TablePagination
-            rowsPerPageOptions={[5, 10, 25]}
-            component="div"
-            count={rows.length}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            onPageChange={handleChangePage}
-            onRowsPerPageChange={handleChangeRowsPerPage}
-          />
-        </Paper>
-      </Box>
+                        <ViewIcon />
+                      </IconButton>
+                      <IconButton
+                        aria-label="reserve"
+                        onClick={() => handleReserve(row)}
+                      >
+                        <SendIcon />
+                      </IconButton>
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <TablePagination
+          rowsPerPageOptions={[5, 10, 25]}
+          component="div"
+          count={rows.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
+      </Paper>
+      {/* </Box> */}
     </Suspense>
   );
 };
