@@ -1,12 +1,10 @@
 name: component test
 
 on:
-  [pull_request, push]
-
-  # workflow_run:
-  #   workflows: ['Lint']
-  #   types:
-  #     - completed
+  workflow_run:
+    workflows: ['Lint']
+    types:
+      - completed
 
 jobs:
   cypress-run:
@@ -21,8 +19,8 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Install dependencies with legacy peer deps
-        run: npm install --legacy-peer-deps
+      - name: Install dependencies
+        run: npm install -f
 
       - name: Cypress run
         uses: cypress-io/github-action@v6
