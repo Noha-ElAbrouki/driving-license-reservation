@@ -1,6 +1,5 @@
 import '@testing-library/cypress/add-commands';
-const { addCompareSnapshotCommand } = require('cypress-visual-regression/dist/command')
-addCompareSnapshotCommand()
+
 //
 //
 // -- This is a parent command --

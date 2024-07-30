@@ -20,7 +20,6 @@
     "@fontsource/roboto": "^5.0.13",
     "@mui/icons-material": "^5.16.5",
     "@mui/material": "^5.16.5",
-    "cypress-visual-regression": "^5.0.2",
     "dayjs": "^1.11.12",
     "install": "^0.13.0",
     "jotai": "^2.9.0",
