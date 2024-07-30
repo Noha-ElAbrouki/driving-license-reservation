@@ -26,7 +26,7 @@ function createData(id, name, agrement, date, adresse) {
     name,
     agrement,
     date,
-    adresse
+    adresse,
   };
 }
 
@@ -43,11 +43,11 @@ const originalRows = [
   createData(10, 'Uuto ecole 12', 392, addDays(10), 'adresse 10'),
   createData(11, 'Yuto ecole 11', 318, addDays(11), 'adresse 11'),
   createData(12, 'Guto ecole 13', 360, addDays(12), 'adresse 12'),
-  createData(13, 'Xuto ecole 14', 437, addDays(13), 'adresse 13')
+  createData(13, 'Xuto ecole 14', 437, addDays(13), 'adresse 13'),
 ];
 
 const Rdvs = () => {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const [order, setOrder] = useState('asc');
   const [orderBy, setOrderBy] = useState('name');
   const [isNumeric, setIsNumeric] = useState();
@@ -64,7 +64,7 @@ const Rdvs = () => {
     order,
     isFieldNumeric: isNumeric,
     field: orderBy,
-    data: rows
+    data: rows,
   }).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
   const handleRequestSort = (property, isNum) => {
@@ -115,73 +115,73 @@ const Rdvs = () => {
     <Suspense
       fallback={<Skeleton variant="rectangular" width="100%" height="100%" />}
     >
-      <Box sx={{ width: '100%' }}>
-        {/* <div className={classes.search}>
+      {/* <Box sx={{ width: '100%' }}> */}
+      {/* <div className={classes.search}>
           <Search
             onCancel={cancelSearch}
             onChange={requestSearch}
             value={searched}
           />
         </div> */}
-        <Paper className={classes.body}>
-          <TableContainer>
-            <Table
-              className={classes.table}
-              aria-labelledby="tableTitle"
-              size="small"
-            >
-              <EnhancedTableHead
-                order={order}
-                orderBy={orderBy}
-                onRequestSort={handleRequestSort}
-              />
-              <TableBody>
-                {data?.map((row, index) => {
-                  const labelId = `enhanced-table-${index}`;
-                  return (
-                    <TableRow hover tabIndex={-1} key={row.name}>
-                      <TableCell
-                        component="th"
-                        id={labelId}
-                        scope="row"
-                        align="left"
+      <Paper>
+        <TableContainer>
+          <Table
+            className={classes.table}
+            aria-labelledby="tableTitle"
+            size="small"
+          >
+            <EnhancedTableHead
+              order={order}
+              orderBy={orderBy}
+              onRequestSort={handleRequestSort}
+            />
+            <TableBody>
+              {data?.map((row, index) => {
+                const labelId = `enhanced-table-${index}`;
+                return (
+                  <TableRow hover tabIndex={-1} key={row.name}>
+                    <TableCell
+                      component="th"
+                      id={labelId}
+                      scope="row"
+                      align="left"
+                    >
+                      {row.name}
+                    </TableCell>
+                    <TableCell align="left">{row.date}</TableCell>
+                    <TableCell align="left">{row.adresse}</TableCell>
+                    <TableCell align="right">{row.agrement}</TableCell>
+                    <TableCell align="left">
+                      <IconButton
+                        aria-label="view"
+                        onClick={() => handleView(row)}
                       >
-                        {row.name}
-                      </TableCell>
-                      <TableCell align="left">{row.date}</TableCell>
-                      <TableCell align="left">{row.adresse}</TableCell>
-                      <TableCell align="right">{row.agrement}</TableCell>
-                      <TableCell align="left">
-                        <IconButton
-                          aria-label="view"
-                          onClick={() => handleView(row)}
-                        >
-                          <ViewIcon />
-                        </IconButton>
-                        <IconButton
-                          aria-label="reserve"
-                          onClick={() => handleReserve(row)}
-                        >
-                          <SendIcon />
-                        </IconButton>
-                      </TableCell>
-                    </TableRow>
-                  );
-                })}
-              </TableBody>
-            </Table>
-          </TableContainer>
-          <TablePagination
-            rowsPerPageOptions={[5, 10, 25]}
-            component="div"
-            count={rows.length}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            onPageChange={handleChangePage}
-            onRowsPerPageChange={handleChangeRowsPerPage}
-          />
-        </Paper>
-      </Box>
+                        <ViewIcon />
+                      </IconButton>
+                      <IconButton
+                        aria-label="reserve"
+                        onClick={() => handleReserve(row)}
+                      >
+                        <SendIcon />
+                      </IconButton>
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <TablePagination
+          rowsPerPageOptions={[5, 10, 25]}
+          component="div"
+          count={rows.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
+      </Paper>
+      {/* </Box> */}
     </Suspense>
   );
 };

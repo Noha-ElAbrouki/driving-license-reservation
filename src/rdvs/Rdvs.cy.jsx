@@ -19,6 +19,6 @@ describe('<Rdvs />', () => {
     cy.contains('Duto ecole 4');
     cy.contains('Cuto ecole 6');
 
-    cy.matchImageSnapshot();
+    cy.compareSnapshot();
   });
 });

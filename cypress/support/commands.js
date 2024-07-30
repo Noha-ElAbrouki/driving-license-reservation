@@ -1,9 +1,6 @@
 import '@testing-library/cypress/add-commands';
-import { addMatchImageSnapshotCommand } from 'cypress-image-snapshot/command';
-
-
-
-addMatchImageSnapshotCommand();
+const { addCompareSnapshotCommand } = require('cypress-visual-regression/dist/command')
+addCompareSnapshotCommand()
 //
 //
 // -- This is a parent command --

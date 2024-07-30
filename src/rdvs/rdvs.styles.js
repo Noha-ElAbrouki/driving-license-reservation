@@ -1,12 +1,12 @@
-import { makeStyles } from '@mui/styles';
+import {  makeStyles } from 'tss-react/mui';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles()({
   search: {
     display: 'flex',
     justifyContent: 'end'
   },
   body: {
-    width: '100%',
+    width: '80%',
     mb: 2
   },
   table: {
