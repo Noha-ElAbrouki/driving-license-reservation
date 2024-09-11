@@ -1,12 +1,12 @@
-This project implements the good practice front (code splitting, lazy loding, lint, tests ..) using github actiond for ci/cd 
-start the project locally: 
+This project implements the good practices front (code splitting, lazy loding, lint, tests ..) using github actiond for ci/cd ,
+deployed on vercel.
+
+visit : https://driving-license-reservation.vercel.app/rdvs
+
+or start the project locally: 
 
 1- npm install
 2- npm start
-
-or visit : https://driving-license-reservation.vercel.app/rdvs
-
-le projet sera lancé en localhost 'http://localhost:3000'
 
 Utiliser le tableau de bord de prise de rendez-vous pour le permis de conduire.
 
